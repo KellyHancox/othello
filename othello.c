@@ -1,14 +1,19 @@
 //***************************************************
 // Filename: othello.c
 //
-// Author: Nandigam
-// Kelly Hancox
 // CIS343
+@author: Nandigam
+@author: Kelly Hancox
+@version: Winter 2019
 //***************************************************
 
 #include "othello.h"
 
-/* Displays the board (as SIZE x SIZE grid) on console */
+/* **************************************************
+ * Displays the board (as SIZE x SIZE grid) on console
+ * @param board the board for othello with size as the
+ * height and length
+ * **************************************************/
 void displayBoard(char board[][SIZE])
 {
 	printf("\n");
@@ -27,7 +32,12 @@ void displayBoard(char board[][SIZE])
 	printf("\n");
 }
 
-/* Initializes the board with start configuration of discs */
+/* ****************************************************
+ * Initializes the board with start configuration
+ * of discs
+ * @param board the board for othello with size as the
+ * height and length
+ * ***************************************************/
 void initializeBoard(char board[][SIZE])
 {
 	//parse through board and make them all '-'
@@ -44,10 +54,22 @@ void initializeBoard(char board[][SIZE])
     board[(SIZE/2)-1][SIZE/2] = 'B';
 }
 
-/* This method is one of 8 and checks the upper left discs
- * to count how many opposite discs there are in a row until you
- * reach the original disc or a blank */
-int checkUpLeft(char board[][SIZE], int row, int col, char disc, char oppositeDisc){
+/* ****************************************************
+ * This method is one of 8 and checks the upper
+ * left discs to count how many opposite discs
+ * there are in a row until you
+ * reach the original disc or a blank
+ * @param board the othello board with size of height
+ * and length
+ * @param row the row of the input
+ * @param col the column of the input
+ * @param disc the player's disc
+ * @param oppositeDisc the other player's disc
+ * @return int the number of opposite discs between
+ * disc and another disc of same
+ * ***************************************************/
+int checkUpLeft(char board[][SIZE], int row, int col,
+        char disc, char oppositeDisc){
 
     int oppositeCount = 0;
 
@@ -60,7 +82,8 @@ int checkUpLeft(char board[][SIZE], int row, int col, char disc, char oppositeDi
             if(board[row-1][col-1] == disc){
                 return oppositeCount;
             }
-            else if(board[row-1][col-1] != disc && board[row-1][col-1] != oppositeDisc){
+            else if(board[row-1][col-1] != disc &&
+                    board[row-1][col-1] != oppositeDisc){
                 return 0;
             }
             
@@ -73,10 +96,22 @@ int checkUpLeft(char board[][SIZE], int row, int col, char disc, char oppositeDi
     return 0;
 }
 
-/* This method is one of 8 and checks the upper discs
- * to count how many opposite discs there are in a row until you
- * reach the original disc or a blank */
-int checkUp(char board[][SIZE], int row, int col, char disc, char oppositeDisc) {
+/* ****************************************************
+ * This method is one of 8 and checks the upper
+ * discs to count how many opposite discs
+ * there are in a row until you
+ * reach the original disc or a blank
+ * @param board the othello board with size of height
+ * and length
+ * @param row the row of the input
+ * @param col the column of the input
+ * @param disc the player's disc
+ * @param oppositeDisc the other player's disc
+ * @return int the number of opposite discs between
+ * disc and another disc of same
+ * ***************************************************/
+int checkUp(char board[][SIZE], int row, int col,
+        char disc, char oppositeDisc) {
 
     int oppositeCount = 0;
 
@@ -90,7 +125,8 @@ int checkUp(char board[][SIZE], int row, int col, char disc, char oppositeDisc) 
 
                 return oppositeCount;
             }
-            else if(board[row-1][col] != disc && board[row-1][col] != oppositeDisc){
+            else if(board[row-1][col] != disc &&
+                    board[row-1][col] != oppositeDisc){
                 return 0;
             }
 
@@ -100,10 +136,22 @@ int checkUp(char board[][SIZE], int row, int col, char disc, char oppositeDisc) 
     return 0;
 }
 
-/* This method is one of 8 and checks the upper right discs
- * to count how many opposite discs there are in a row until you
- * reach the original disc or a blank */
-int checkUpRight(char board[][SIZE], int row, int col, char disc, char oppositeDisc){
+/* ****************************************************
+ * This method is one of 8 and checks the upper
+ * right discs to count how many opposite discs
+ * there are in a row until you
+ * reach the original disc or a blank
+ * @param board the othello board with size of height
+ * and length
+ * @param row the row of the input
+ * @param col the column of the input
+ * @param disc the player's disc
+ * @param oppositeDisc the other player's disc
+ * @return int the number of opposite discs between
+ * disc and another disc of same
+ * ***************************************************/
+int checkUpRight(char board[][SIZE], int row, int col,
+        char disc, char oppositeDisc){
 
     int oppositeCount = 0;
 
@@ -116,7 +164,8 @@ int checkUpRight(char board[][SIZE], int row, int col, char disc, char oppositeD
             if(board[row-1][col+1] == disc){
                 return oppositeCount;
             }
-            else if(board[row-1][col+1] != disc && board[row-1][col+1] != oppositeDisc){
+            else if(board[row-1][col+1] != disc &&
+                    board[row-1][col+1] != oppositeDisc){
                 return 0;
             }
 
@@ -128,10 +177,22 @@ int checkUpRight(char board[][SIZE], int row, int col, char disc, char oppositeD
     return 0;
 }
 
-/* This method is one of 8 and checks the right discs
- * to count how many opposite discs there are in a row until you
- * reach the original disc or a blank */
-int checkRight(char board[][SIZE], int row, int col, char disc, char oppositeDisc){
+/* ****************************************************
+ * This method is one of 8 and checks the right
+ * discs to count how many opposite discs
+ * there are in a row until you
+ * reach the original disc or a blank
+ * @param board the othello board with size of height
+ * and length
+ * @param row the row of the input
+ * @param col the column of the input
+ * @param disc the player's disc
+ * @param oppositeDisc the other player's disc
+ * @return int the number of opposite discs between
+ * disc and another disc of same
+ * ***************************************************/
+int checkRight(char board[][SIZE], int row, int col,
+        char disc, char oppositeDisc){
 
     int oppositeCount = 0;
 
@@ -144,7 +205,8 @@ int checkRight(char board[][SIZE], int row, int col, char disc, char oppositeDis
             if(board[row][col+1] == disc){
                 return oppositeCount;
             }
-            else if(board[row][col+1] != disc && board[row][col+1] != oppositeDisc){
+            else if(board[row][col+1] != disc &&
+                    board[row][col+1] != oppositeDisc){
                 return 0;
             }
             
@@ -155,10 +217,22 @@ int checkRight(char board[][SIZE], int row, int col, char disc, char oppositeDis
     return 0;
 }
 
-/* This method is one of 8 and checks the lower right discs
- * to count how many opposite discs there are in a row until you
- * reach the original disc or a blank */
-int checkDownRight(char board[][SIZE], int row, int col, char disc, char oppositeDisc){
+/* ****************************************************
+ * This method is one of 8 and checks the lower
+ * right discs to count how many opposite discs
+ * there are in a row until you
+ * reach the original disc or a blank
+ * @param board the othello board with size of height
+ * and length
+ * @param row the row of the input
+ * @param col the column of the input
+ * @param disc the player's disc
+ * @param oppositeDisc the other player's disc
+ * @return int the number of opposite discs between
+ * disc and another disc of same
+ * ***************************************************/
+int checkDownRight(char board[][SIZE], int row,
+        int col, char disc, char oppositeDisc){
 
     int oppositeCount = 0;
 
@@ -171,7 +245,8 @@ int checkDownRight(char board[][SIZE], int row, int col, char disc, char opposit
             if(board[row+1][col+1] == disc){
                 return oppositeCount;
             }
-            else if(board[row+1][col+1] != disc && board[row+1][col+1] != oppositeDisc){
+            else if(board[row+1][col+1] != disc &&
+                    board[row+1][col+1] != oppositeDisc){
                 return 0;
             }
             
@@ -182,10 +257,22 @@ int checkDownRight(char board[][SIZE], int row, int col, char disc, char opposit
     return 0;
 }
 
-/* This method is one of 8 and checks the lower discs
- * to count how many opposite discs there are in a row until you
- * reach the original disc or a blank */
-int checkDown(char board[][SIZE], int row, int col, char disc, char oppositeDisc){
+/* ****************************************************
+ * This method is one of 8 and checks the lower
+ * discs to count how many opposite discs
+ * there are in a row until you
+ * reach the original disc or a blank
+ * @param board the othello board with size of height
+ * and length
+ * @param row the row of the input
+ * @param col the column of the input
+ * @param disc the player's disc
+ * @param oppositeDisc the other player's disc
+ * @return int the number of opposite discs between
+ * disc and another disc of same
+ * ***************************************************/
+int checkDown(char board[][SIZE], int row, int col,
+        char disc, char oppositeDisc){
 
     int oppositeCount = 0;
 
@@ -198,7 +285,8 @@ int checkDown(char board[][SIZE], int row, int col, char disc, char oppositeDisc
             if(board[row+1][col] == disc){
                 return oppositeCount;
             }
-            else if(board[row+1][col] != disc && board[row+1][col] != oppositeDisc){
+            else if(board[row+1][col] != disc &&
+                    board[row+1][col] != oppositeDisc){
                 return 0;
             }
             
@@ -208,10 +296,22 @@ int checkDown(char board[][SIZE], int row, int col, char disc, char oppositeDisc
     return 0;
 }
 
-/* This method is one of 8 and checks the lower left discs
- * to count how many opposite discs there are in a row until you
- * reach the original disc or a blank */
-int checkDownLeft(char board[][SIZE], int row, int col, char disc, char oppositeDisc){
+/* ****************************************************
+ * This method is one of 8 and checks the lower
+ * left discs to count how many opposite discs
+ * there are in a row until you
+ * reach the original disc or a blank
+ * @param board the othello board with size of height
+ * and length
+ * @param row the row of the input
+ * @param col the column of the input
+ * @param disc the player's disc
+ * @param oppositeDisc the other player's disc
+ * @return int the number of opposite discs between
+ * disc and another disc of same
+ * ***************************************************/
+int checkDownLeft(char board[][SIZE], int row, int col,
+        char disc, char oppositeDisc){
 
     int oppositeCount = 0;
 
@@ -225,7 +325,8 @@ int checkDownLeft(char board[][SIZE], int row, int col, char disc, char opposite
                 return oppositeCount;
             }
             
-            else if(board[row+1][col-1] != disc && board[row+1][col-1] != oppositeDisc){
+            else if(board[row+1][col-1] != disc &&
+                    board[row+1][col-1] != oppositeDisc){
                 return 0;
             }
             row++;
@@ -236,10 +337,22 @@ int checkDownLeft(char board[][SIZE], int row, int col, char disc, char opposite
     return 0;
 }
 
-/* This method is one of 8 and checks the left discs
- * to count how many opposite discs there are in a row until you
- * reach the original disc or a blank */
-int checkLeft(char board[][SIZE], int row, int col, char disc, char oppositeDisc){
+/* ****************************************************
+ * This method is one of 8 and checks the
+ * left discs to count how many opposite discs
+ * there are in a row until you
+ * reach the original disc or a blank
+ * @param board the othello board with size of height
+ * and length
+ * @param row the row of the input
+ * @param col the column of the input
+ * @param disc the player's disc
+ * @param oppositeDisc the other player's disc
+ * @return int the number of opposite discs between
+ * disc and another disc of same
+ * ***************************************************/
+int checkLeft(char board[][SIZE], int row, int col,
+        char disc, char oppositeDisc){
 
     int oppositeCount = 0;
 
@@ -253,7 +366,8 @@ int checkLeft(char board[][SIZE], int row, int col, char disc, char oppositeDisc
                 return oppositeCount;
             }
             
-            else if(board[row][col-1] != disc && board[row][col-1] != oppositeDisc){
+            else if(board[row][col-1] != disc &&
+                    board[row][col-1] != oppositeDisc){
                 return 0;
             }
             col--;
@@ -263,9 +377,17 @@ int checkLeft(char board[][SIZE], int row, int col, char disc, char oppositeDisc
 }
 
 
-/* This method checks if the input is valid
+/* ************************************************************
+ * This method checks if the input is valid
  * Returns true if moving the disc to location row,col is valid;
- * else returns false */
+ * else returns false
+ * @param board the othello board with size of height
+ * and length
+ * @param row the row of the input
+ * @param col the column of the input
+ * @param disc the player's disc
+ * @return bool whether or not the move is valid
+ * ************************************************************/
 bool isValidMove(char board[][SIZE], int row, int col, char disc)
 {
 
@@ -387,6 +509,16 @@ bool isValidMove(char board[][SIZE], int row, int col, char disc)
 }
 
 
+/********************************************************
+ * This method flips discs in the upper left from the
+ * input to the current disc
+ * @param board othello board with size dimensions
+ * @param row row of the input
+ * @param col column of input
+ * @param disc current player's disc
+ * @param opposite opposite disc
+ * @param upLeft how many discs to flip
+ ******************************************************/
 void changeUpLeftDisc(char board[][SIZE], int row,
         int col, char disc, char opposite, int upLeft) {
     for (int i = 1; i <= upLeft; i++) {
@@ -394,6 +526,17 @@ void changeUpLeftDisc(char board[][SIZE], int row,
     }
 }
 
+
+/********************************************************
+ * This method flips discs in the above the input to
+ * the current disc
+ * @param board othello board with size dimensions
+ * @param row row of the input
+ * @param col column of input
+ * @param disc current player's disc
+ * @param opposite opposite disc
+ * @param upLeft how many discs to flip
+ ******************************************************/
 void changeUpDisc(char board[][SIZE], int row,
         int col, char disc, char opposite, int up) {
     for (int j = 1; j <= up; j++) {
@@ -401,6 +544,16 @@ void changeUpDisc(char board[][SIZE], int row,
     }
 }
 
+/********************************************************
+ * This method flips discs from the upper right of  the
+ * input to the current disc
+ * @param board othello board with size dimensions
+ * @param row row of the input
+ * @param col column of input
+ * @param disc current player's disc
+ * @param opposite opposite disc
+ * @param upLeft how many discs to flip
+ ******************************************************/
 void changeUpRightDisc(char board[][SIZE], int row,
         int col, char disc, char opposite, int upRight) {
     for (int k = 1; k <= upRight; k++) {
@@ -408,6 +561,16 @@ void changeUpRightDisc(char board[][SIZE], int row,
     }
 }
 
+/********************************************************
+ * This method flips discs to the right of the input to
+ * the current disc
+ * @param board othello board with size dimensions
+ * @param row row of the input
+ * @param col column of input
+ * @param disc current player's disc
+ * @param opposite opposite disc
+ * @param upLeft how many discs to flip
+ ******************************************************/
 void changeRightDisc(char board[][SIZE], int row,
         int col, char disc, char opposite, int right) {
     for (int l = 1; l <= right; l++) {
@@ -415,6 +578,16 @@ void changeRightDisc(char board[][SIZE], int row,
     }
 }
 
+/********************************************************
+ * This method flips discs to the lower right of the
+ * input to the current disc
+ * @param board othello board with size dimensions
+ * @param row row of the input
+ * @param col column of input
+ * @param disc current player's disc
+ * @param opposite opposite disc
+ * @param upLeft how many discs to flip
+ ******************************************************/
 void changeDownRightDisc(char board[][SIZE], int row,
         int col, char disc, char opposite, int downRight) {
     for (int m = 1; m <= downRight; m++) {
@@ -422,6 +595,16 @@ void changeDownRightDisc(char board[][SIZE], int row,
     }
 }
 
+/********************************************************
+ * This method flips discs below the input to
+ * the current disc
+ * @param board othello board with size dimensions
+ * @param row row of the input
+ * @param col column of input
+ * @param disc current player's disc
+ * @param opposite opposite disc
+ * @param upLeft how many discs to flip
+ ******************************************************/
 void changeDownDisc(char board[][SIZE], int row,
         int col, char disc, char opposite, int down) {
     for (int n = 1; n <= down; n++) {
@@ -429,6 +612,16 @@ void changeDownDisc(char board[][SIZE], int row,
     }
 }
 
+/********************************************************
+ * This method flips discs down right of the input to
+ * the current disc
+ * @param board othello board with size dimensions
+ * @param row row of the input
+ * @param col column of input
+ * @param disc current player's disc
+ * @param opposite opposite disc
+ * @param upLeft how many discs to flip
+ ******************************************************/
 void changeDownLeftDisc(char board[][SIZE], int row,
         int col, char disc, char opposite, int downLeft) {
     for (int r = 1; r <= downLeft; r++) {
@@ -436,6 +629,16 @@ void changeDownLeftDisc(char board[][SIZE], int row,
     }
 }
 
+/********************************************************
+ * This method flips discs left of the input to
+ * the current disc
+ * @param board othello board with size dimensions
+ * @param row row of the input
+ * @param col column of input
+ * @param disc current player's disc
+ * @param opposite opposite disc
+ * @param upLeft how many discs to flip
+ ******************************************************/
 void changeLeftDisc(char board[][SIZE], int row,
         int col, char disc, char opposite, int left) {
     for (int s = 1; s <= left; s++) {
@@ -443,7 +646,15 @@ void changeLeftDisc(char board[][SIZE], int row,
     }
 }
 
-/* Places the disc at location row,col and flips the opponent discs as needed */
+
+/*******************************************************
+ * Places the disc at location row,col and flips the
+ * opponent discs as needed
+ * @param board board with size dimensions
+ * @param row input row
+ * @param col input column
+ * @param disc current player's disc
+ *******************************************************/
 void placeDiscAt(char board[][SIZE], int row, int col, char disc) {
 
     char opposite = '\0';
@@ -597,11 +808,17 @@ void placeDiscAt(char board[][SIZE], int row, int col, char disc) {
     }
 }
 
-/* Returns true if a valid move for
- * disc is available; else returns false */
+
+/*******************************************************
+ * True if a valid move for
+ * disc is available; else returns false
+ * @param board othello board with size dimensions
+ * @param disc current player's disc
+ * @return bool if there exists a valid move on board
+ ********************************************************/
 bool isValidMoveAvailable(char board[][SIZE], char disc)
 {
-    //only need to find one
+    //only need to find first one
     for(int i = 0; i < SIZE; i++){
         for(int j = 0; j < SIZE; j++){
             if(board[i][j] == '-'){
@@ -614,8 +831,11 @@ bool isValidMoveAvailable(char board[][SIZE], char disc)
 	return false;
 }
 
-/* Returns true if the board is fully
- * occupied with discs; else returns false */
+/*********************************************************
+ * Checks if board is entirely full
+ * @param board othello board with size dimensions
+ * @return bool if full or not
+ *********************************************************/
 bool isBoardFull(char board[][SIZE]){
 
     bool boardIsFull = false;
@@ -637,8 +857,13 @@ bool isBoardFull(char board[][SIZE]){
 	return boardIsFull;
 }
 
-/* Returns true if either the board is full
- * or a valid move is not available for either disc */
+
+/**********************************************************
+ * Returns true if either the board is full
+ * or a valid move is not available for either disc
+ * @param board othello board with size dimensions
+ * @return bool if game is over or not
+ **********************************************************/
 bool isGameOver(char board[][SIZE])
 {
     bool gameIsOver = false;
@@ -648,14 +873,21 @@ bool isGameOver(char board[][SIZE])
         gameIsOver = true;
     }
 
-    if(!isValidMoveAvailable(board,'B') && !isValidMoveAvailable(board, 'W')){
+    if(!isValidMoveAvailable(board,'B') &&
+    !isValidMoveAvailable(board, 'W')){
         gameIsOver = true;
     }
 	return gameIsOver;
 }
 
-/* If there is a winner, it returns the disc (BLACK or WHITE)
- * associated with the winner. In case of a tie, it returns EMPTY */
+/*  */
+/***********************************************************
+ * If there is a winner, it returns the disc (BLACK or WHITE)
+ * associated with the winner. In case of a tie,
+ * it returns EMPTY
+ * @param board othello board with size dimensions
+ * @return char disc of the winner
+ ***********************************************************/
 char checkWinner(char board[][SIZE]) {
     int blackCount = 0;
     int whiteCount = 0;
